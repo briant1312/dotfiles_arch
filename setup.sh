@@ -3,6 +3,9 @@
 # install packages
 sudo pacman -Sy firefox neovim nodejs kitty awesome xclip xcompmgr feh npm rofi -y
 
+# create config directory
+mkdir ~/.config 2>/dev/null
+
 # remove any existing config files
 rm -rf ~/.config/awesome
 rm ~/.bashrc
