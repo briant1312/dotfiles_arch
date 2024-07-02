@@ -24,3 +24,5 @@ ln -sf ~/.dotfiles/kitty ~/.config/kitty
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
 ln -sf ~/.dotfiles/rofi ~/.config/rofi
 ln -sf ~/.dotfiles/Scripts ~/Documents/Scripts
+
+echo "setup complete"
