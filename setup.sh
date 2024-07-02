@@ -1,18 +1,13 @@
 #! /bin/bash
 
 # install packages
-sudo pacman -Sy firefox neovim nodejs kitty awesome xclip xcompmgr git feh npm rofi -y
+sudo pacman -Sy firefox neovim nodejs kitty awesome xclip xcompmgr feh npm rofi -y
 
 # make directories
 mkdir ~/.config
 mkdir ~/.config/kitty
 mkdir ~/.config/awesome
 mkdir ~/.config/rofi
-
-cd ~/.config
-git clone https://github.com/briant1312/nvim
-cd ~/.config/nvim
-git checkout linux
 
 # remove any existing config files
 rm -rf ~/.config/awesome
