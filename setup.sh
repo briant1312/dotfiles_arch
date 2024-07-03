@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # install packages
-sudo pacman -Sy firefox neovim nodejs alacritty awesome xclip xcompmgr feh npm rofi -y
+sudo pacman -S firefox neovim nodejs alacritty awesome xclip xcompmgr feh npm rofi -y
 
 # create config directory
 mkdir ~/.config 2>/dev/null
