@@ -45,7 +45,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/brian/.config/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -546,6 +546,6 @@ client.connect_signal("focus", function(c) c.border_color = "#08858a" end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.spawn("xcompmgr", false)
+awful.spawn("xcompmgr -fc -D 5", false)
 awful.spawn("/home/brian/Documents/Scripts/wallpaper.sh", false)
 beautiful.useless_gap = 5
