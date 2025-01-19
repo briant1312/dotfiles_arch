@@ -5,6 +5,7 @@ opacity = 0.8
 blur = true
 
 [font]
+normal = { family = "JetBrainsMonoNLNerdFontMono", style = "Thin" }
 size = 13.0
 
 [selection]
