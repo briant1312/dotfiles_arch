@@ -15,6 +15,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -194,6 +195,12 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+    width = 70,
+            cpu_widget({
+                step_width = 2,
+                step_spacing = 0,
+                color = '#434c5e'
+            }),
             volume_widget{
                 widget_type = 'arc'
             },
@@ -314,6 +321,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
+    -- volume controls
     awful.key({}, "XF86AudioRaiseVolume", function() volume_widget.inc() end),
     awful.key({}, "XF86AudioLowerVolume", function() volume_widget.dec() end),
     awful.key({}, "XF86AudioMute", function() volume_widget.toggle() end)
