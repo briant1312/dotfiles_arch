@@ -561,7 +561,8 @@ client.connect_signal("focus", function(c) c.border_color = "#08858a" end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.spawn("xcompmgr -fc -D 5", false)
+awful.spawn.with_shell("pkill xcompmgr", false)
+awful.spawn.with_shell("sleep 0.1 && xcompmgr -fc -D 5", false)
 awful.spawn("/home/brian/Documents/Scripts/wallpaper.sh", false)
 awful.spawn("/home/brian/Documents/Scripts/config_input.sh", false)
 beautiful.useless_gap = 5
