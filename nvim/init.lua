@@ -288,26 +288,40 @@ vim.keymap.set('n', '<leader>wk', '<C-w>k')
 vim.keymap.set('n', '<leader>wl', '<C-w>l')
 vim.keymap.set('i', '<C-e>', '<Esc>A')
 vim.keymap.set('n', '<leader>x', function()
-  local fileName = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-  for str in string.gmatch(fileName, "[^.]+$") do
-        if(str == "js") then
-            vim.api.nvim_command(":w")
-            print("\n")
-            vim.api.nvim_command(":w !node")
-        elseif (str == "py") then
-            vim.api.nvim_command(":w")
-            print("\n")
-            vim.api.nvim_command(":w !python3")
-        elseif (str == "go") then
-            vim.api.nvim_command(":w")
-            print("\n")
-            vim.api.nvim_command(":w !go run %")
-        else
-            vim.api.nvim_command(":w")
-            print("\n")
-            vim.api.nvim_command(":source %")
+  -- Save the current buffer
+  vim.cmd('write')
+
+  -- Get current file name and extension
+  local fileName = vim.api.nvim_buf_get_name(0)
+  local ext = fileName:match("^.+(%..+)$") or ""
+
+  -- Function to run a shell command
+  local function run_cmd(cmd)
+    vim.fn.jobstart(cmd, {
+      stdout_buffered = true,
+      stderr_buffered = true,
+      on_stdout = function(_, data)
+        if data then
+          print(table.concat(data, "\n"))
         end
-    end
+      end,
+      on_stderr = function(_, data)
+        if data then
+          print(table.concat(data, "\n"))
+        end
+      end,
+    })
+  end
+
+  if ext == ".js" then
+    run_cmd({ "node", fileName })
+  elseif ext == ".py" then
+    run_cmd({ "python3", fileName })
+  elseif ext == ".go" then
+    run_cmd({ "go", "run", fileName })
+  else
+    vim.cmd("source %")
+  end
 end)
 
 -- [[ Highlight on yank ]]

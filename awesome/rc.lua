@@ -134,6 +134,7 @@ local tasklist_buttons = gears.table.join(
                                               if c == client.focus then
                                                   c.minimized = true
                                               else
+                                                  c.minimized = false
                                                   c:emit_signal(
                                                       "request::activate",
                                                       "tasklist",
@@ -417,7 +418,12 @@ for i = 1, 9 do
                           end
                       end
                   end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+                  {description = "toggle focused client on tag #" .. i, group = "tag"}),
+        -- My custom keybinds
+        awful.key({ "Control", "Shift"}, "s",
+            function()
+                awful.spawn("/usr/bin/flameshot gui", false)
+            end)
     )
 end
 
@@ -561,8 +567,11 @@ client.connect_signal("focus", function(c) c.border_color = "#08858a" end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.spawn.with_shell("pkill xcompmgr", false)
-awful.spawn.with_shell("sleep 0.1 && xcompmgr -fc -D 5", false)
+-- awful.spawn.with_shell("pkill xcompmgr", false)
+-- awful.spawn.with_shell("sleep 0.1 && xcompmgr -fc -D 5", false)
+awful.spawn.with_shell("picom", false)
+awful.spawn.with_shell("xautolock -time 15 -locker 'systemctl suspend' &", false)
 awful.spawn("/home/brian/Documents/Scripts/wallpaper.sh", false)
 awful.spawn("/home/brian/Documents/Scripts/config_input.sh", false)
+-- awful.spawn("/home/brian/Documents/Scripts/set_sddm_theme.sh", false)
 beautiful.useless_gap = 5
