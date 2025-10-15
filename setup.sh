@@ -30,4 +30,12 @@ search_text="Current="
 new_text="Current=sddm-astronaut-theme"
 sudo sed -i "s|^$search_text.*|$new_text|" $sddm_default_conf_file
 
+# install brave browser
+mkdir ~/packages 2>/dev/null
+cd ~/packages
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+curl -fsS https://dl.brave.com/install.sh | sh
+
 echo "setup complete"
