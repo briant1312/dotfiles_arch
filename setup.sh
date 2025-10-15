@@ -32,6 +32,7 @@ sudo sed -i "s|^$search_text.*|$new_text|" $sddm_default_conf_file
 
 # install brave browser
 mkdir ~/packages 2>/dev/null
+rm -rf ~/packages/yay
 cd ~/packages
 git clone https://aur.archlinux.org/yay.git
 cd yay
