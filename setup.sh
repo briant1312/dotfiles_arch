@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # install packages
-sudo pacman -S firefox neovim nodejs alacritty xclip xcompmgr feh npm rofi alsa-utils arc-gtk-theme bluez-tools bluez-utils breeze-gtk brightnessctl nemo neofetch net-tools network-manager-applet pulseaudio-qt qt5ct ttf-jetbrains-mono-nerd xorg-input -y
+cat ~/.dotfiles/packages | while read package; do sudo pacman -S --noconfirm $package; done
 
 # create config directory
 mkdir ~/.config 2>/dev/null
