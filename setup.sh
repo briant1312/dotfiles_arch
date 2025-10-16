@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # install packages
-cat ~/.dotfiles/packages | while read package; do sudo pacman -S --noconfirm $package; done
+cat ~/.dotfiles/packages | while read package; do sudo pacman -S --noconfirm --needed $package; done
 
 # create config directory
 mkdir ~/.config 2>/dev/null
@@ -38,5 +38,8 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 curl -fsS https://dl.brave.com/install.sh | sh
+
+# install xautolock
+yay -S --noconfirm --needed xautolock
 
 echo "setup complete"
