@@ -13,6 +13,7 @@ rm -rf ~/.config/alacritty
 rm -rf ~/.config/nvim
 rm -rf ~/.config/rofi
 rm -rf ~/Documents/Scripts
+rm ~/.config/picom.conf
 sudo rm -rf /usr/share/sddm/themes
 
 # link config files to dotfiles directory
@@ -22,6 +23,7 @@ ln -sf ~/.dotfiles/alacritty ~/.config/alacritty
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
 ln -sf ~/.dotfiles/rofi ~/.config/rofi
 ln -sf ~/.dotfiles/Scripts ~/Documents/Scripts
+ln -sf ~/.dotfiles/picom.conf ~/.config/picom.conf
 sudo cp -r ~/.dotfiles/themes /usr/share/sddm/themes
 
 # change base sddm theme
